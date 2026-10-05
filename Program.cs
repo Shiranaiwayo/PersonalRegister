@@ -8,41 +8,43 @@ internal class Program
     {
         var dataStorage = new DataStorage();
         List<Person> people = dataStorage.GetPeople();
-        PrintAllPeople(people);
 
         var continues = true;
 
         while (continues) 
         {
+            Console.Clear();
             ShowMenu();
 
-            var choice = Console.ReadLine();
+            var choice = Console.ReadLine().Trim();
 
             switch (choice)
             {
                 case "1":
-                    //Method ShowAllPeopleIDSorted
+                    PrintAllPeopleIDSorted(people);
                     break;
                 case "2":
-                    //Method ShowTop5PeopleIDSorted
+                    //Method PrintTop5PeopleIDSorted
                     break;
                 case "3":
-                    //Method ShowAllPeopleNameSorted
+                    //Method PrintAllPeopleNameSorted
                     break;
                 case "4":
-                    //Method ShowTop5PeopleNameSorted
+                    //Method PrintTop5PeopleNameSorted
                     break;
                 case "5":
                     //Method SearchPeopleByName
                     break;
                 case "6":
                     continues = false;
-                    Console.WriteLine("Programmet avslutat.");
-                    break;
+                    Console.WriteLine("\nProgrammet avslutat.");
+                    continue;
                 default:
                     Console.WriteLine("Ogiltig input. Välj ett nummer mellan 1 och 6.");
                     break;
             }
+            Console.WriteLine("\nTryck på valfri tangent för att återgå till menyn.");
+            Console.ReadKey(true);
         }
     }
     private static void ShowMenu()
@@ -60,9 +62,14 @@ internal class Program
             """);
         Console.Write("\nVälj ett alternativ (1-6): ");
     }
-    private static void PrintPersonInfo(Person person)
+    private static void PrintPeople(IEnumerable<Person> people)
     {
-        Console.WriteLine($"""
+        Console.WriteLine("\nRESULTAT");
+        
+        foreach (Person person in people)
+        {
+            Console.WriteLine($"""
+            ------------------------------------------------
             ID:             {person.Id}
             Namn:           {person.Name}
             Epost:          {person.Email}
@@ -72,14 +79,12 @@ internal class Program
             Företag:        {person.Company.Name}
             Företagsslogan: {person.Company.Slogan}
             """);
-    }
-    static void PrintAllPeople(List<Person> people)
-    {
-        foreach (Person person in people)
-        {
-            PrintPersonInfo(person);
-            Console.WriteLine();
         }
+        Console.WriteLine("------------------------------------------------");
+    }
+    private static void PrintAllPeopleIDSorted(List<Person> people)
+    {
+        PrintPeople(people.OrderBy(person => person.Id));
     }
 
 }
