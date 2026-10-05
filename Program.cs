@@ -1,10 +1,12 @@
-﻿namespace PersonalRegister
+﻿
+
+namespace PersonalRegister;
+
+internal class Program
 {
-    internal class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello, World!");
-        }
+        var person1 = new Person();
+        
     }
 }
