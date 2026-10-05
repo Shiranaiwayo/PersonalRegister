@@ -11,13 +11,13 @@ public class Person
     public Address Address { get; set; }
     public Company Company { get; set; }
 
-    public Person(long Id, 
+    public Person(long id, 
                   string name, 
                   string email, 
                   Address address, 
                   Company company)
     {
-        Id = Id;
+        Id = id;
         Name = name;
         Email = email;
         Address = address;
