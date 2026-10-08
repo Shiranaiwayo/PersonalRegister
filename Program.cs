@@ -21,26 +21,30 @@ internal class Program
             switch (choice)
             {
                 case "1":
-                    PrintAllPeopleIDSorted(people);
+                    PrintPeopleIDSorted(people);
                     break;
                 case "2":
-                    //Method PrintTop5PeopleIDSorted
+                    PrintPeopleIDSorted(people, 5);
                     break;
                 case "3":
-                    //Method PrintAllPeopleNameSorted
+                    PrintPeopleNameSorted(people);
                     break;
                 case "4":
-                    //Method PrintTop5PeopleNameSorted
+                    PrintPeopleNameSorted(people, 5);
                     break;
                 case "5":
                     //Method SearchPeopleByName
                     break;
                 case "6":
                     continues = false;
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine("\nProgrammet avslutat.");
+                    Console.ResetColor();
                     continue;
                 default:
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("Ogiltig input. Välj ett nummer mellan 1 och 6.");
+                    Console.ResetColor();
                     break;
             }
             Console.WriteLine("\nTryck på valfri tangent för att återgå till menyn.");
@@ -82,9 +86,28 @@ internal class Program
         }
         Console.WriteLine("------------------------------------------------");
     }
-    private static void PrintAllPeopleIDSorted(List<Person> people)
+    private static void PrintPeopleIDSorted(IEnumerable<Person> people, int? quantity = null)
     {
-        PrintPeople(people.OrderBy(person => person.Id));
+        if (quantity != null)
+        {
+            PrintPeople(people.OrderBy(person => person.Id).Take(quantity.Value));
+        }
+        else
+        {
+            PrintPeople(people.OrderBy(person => person.Id));
+        }
+
+    }
+    private static void PrintPeopleNameSorted(IEnumerable<Person> people, int? quantity = null)
+    {
+        if (quantity != null)
+        {
+            PrintPeople(people.OrderBy(person => person.Name).Take(quantity.Value));
+        }
+        else
+        {
+            PrintPeople(people.OrderBy(person => person.Name));
+        }
     }
 
 }

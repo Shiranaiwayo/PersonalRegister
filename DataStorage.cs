@@ -10,7 +10,7 @@ class DataStorage
     /// <returns></returns>
     public List<Person> GetPeople()
     {
-        List<Person> people = new List<Person>
+        return new List<Person>
         {
         new Person(198802242242,
             "Maria Andersson",
@@ -94,8 +94,7 @@ class DataStorage
             "per.holm@example.com",
             new Address("Industrigatan 11", "553 02", "Jönköping"),
             new Company("Holm Consulting", "Knowledge creates progress"))
-    };
-        return people;
+        };
     }
 }
 
