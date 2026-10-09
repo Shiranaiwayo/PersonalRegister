@@ -1,6 +1,4 @@
-﻿
-
-namespace PersonalRegister;
+﻿namespace PersonalRegister;
 
 class DataStorage
 {
