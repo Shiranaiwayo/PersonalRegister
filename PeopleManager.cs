@@ -49,7 +49,7 @@ public class PeopleManager
     }
     public void SearchPeopleByName(IEnumerable<Person> people, string? searchText)
     {
-        while (string.IsNullOrEmpty(searchText.Trim()))
+        while (string.IsNullOrEmpty(searchText?.Trim()))
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Write("\nSöktexten får inte vara tom, vänligen försök igen: ");
