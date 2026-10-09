@@ -16,7 +16,7 @@ internal class Program
             Console.Clear();
             ShowMenu();
 
-            var choice = Console.ReadLine().Trim();
+            var choice = Console.ReadLine()?.Trim();
 
             switch (choice)
             {
@@ -33,7 +33,8 @@ internal class Program
                     PrintPeopleNameSorted(people, 5);
                     break;
                 case "5":
-                    //Method SearchPeopleByName
+                    Console.Write("\nVad vill du söka på?: ");
+                    SearchPeopleByName(people, Console.ReadLine());
                     break;
                 case "6":
                     continues = false;
@@ -42,12 +43,12 @@ internal class Program
                     Console.ResetColor();
                     continue;
                 default:
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Ogiltig input. Välj ett nummer mellan 1 och 6.");
-                    Console.ResetColor();
+                    HandleInvalidInput();
                     break;
             }
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\nTryck på valfri tangent för att återgå till menyn.");
+            Console.ResetColor();
             Console.ReadKey(true);
         }
     }
@@ -57,7 +58,7 @@ internal class Program
             ************************************************
                              PERSONREGISTER      
             ************************************************
-            1. Visa alla personer sortearde på ID
+            1. Visa alla personer sorterade på ID
             2. Visa de 5 första personerna sorterade på ID
             3. Visa alla personer sorterade på namn
             4. Visa de 5 första personerna sorterade på namn
@@ -108,6 +109,37 @@ internal class Program
         {
             PrintPeople(people.OrderBy(person => person.Name));
         }
+    }
+    private static void SearchPeopleByName(IEnumerable<Person> people, string? searchText)
+    {
+        while (string.IsNullOrEmpty(searchText.Trim()))
+        {
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.Write("\nSöktexten får inte vara tom, vänligen försök igen: ");
+            Console.ResetColor();
+            searchText = Console.ReadLine();
+        }
+
+        IEnumerable<Person> matches = people
+            .Where(person => person.Name.ToLower()
+            .Contains(searchText.Trim().ToLower()))
+            .OrderBy(person => person.Id);
+
+        if (!matches.Any())
+        {
+            Console.WriteLine($"\nInga personer hittades för söktexten \"{searchText}\".");
+            return;
+        }
+
+        Console.WriteLine($"\nSökresultatet för \"{searchText}\":");
+
+        PrintPeople(matches);
+    }
+    private static void HandleInvalidInput()
+    {
+        Console.ForegroundColor = ConsoleColor.DarkRed;
+        Console.WriteLine("\nOgiltig input. Välj ett nummer mellan 1 och 6.");
+        Console.ResetColor();
     }
 
 }
