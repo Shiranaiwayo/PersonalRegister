@@ -1,12 +1,16 @@
-﻿
-
-namespace PersonalRegister;
+﻿namespace PersonalRegister;
 
 internal class Program
 {
     static void Main(string[] args)
     {
-        var person1 = new Person();
-        
+        var dataStorage = new DataStorage();
+        List<Person> people = dataStorage.GetPeople();
+        var peopleManager = new PeopleManager();
+        var menu = new Menu(people, peopleManager);
+
+        menu.Run();
     }
 }
+
+
