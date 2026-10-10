@@ -1,6 +1,6 @@
 ﻿namespace PersonalRegister;
 
-class DataStorage
+class DataStorage : IDataSource
 {
     /// <summary>
     /// Returns the hardcoded people to be used in PersonalRegister

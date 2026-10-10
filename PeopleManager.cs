@@ -4,7 +4,7 @@ namespace PersonalRegister;
 
 public class PeopleManager
 {
-    private void PrintPeople(IEnumerable<Person> people)
+    public void PrintPeople(IEnumerable<Person> people) //gör om till private efter Json test
     {
         Console.WriteLine("\nRESULTAT");
 
