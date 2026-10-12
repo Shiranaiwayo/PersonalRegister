@@ -1,16 +1,19 @@
 ﻿
 
+using System.Text.RegularExpressions;
+
 namespace PersonalRegister;
 
 public class Menu
 {
     private List<Person> _people;
-    private PeopleManager _peopleManager;
-
-    public Menu(List<Person> people, PeopleManager peopleManager)
+    private PeopleHandler _peopleHandler;
+    private PeoplePrinter _peoplePrinter;
+    public Menu(List<Person> people, PeopleHandler peopleHandler, PeoplePrinter peoplePrinter)
     {
         _people = people;
-        _peopleManager = peopleManager;
+        _peopleHandler = peopleHandler;
+        _peoplePrinter = peoplePrinter;
     }
     public void Run()
     { 
@@ -26,20 +29,29 @@ public class Menu
             switch (choice)
             {
                 case "1":
-                    _peopleManager.PrintPeopleIDSorted(_people);
+                    _peoplePrinter.PrintPeople(_peopleHandler.SortPeopleByID(_people));
                     break;
                 case "2":
-                    _peopleManager.PrintPeopleIDSorted(_people, 5);
+                    _peoplePrinter.PrintPeople(_peopleHandler.SortPeopleByID(_people, 5));
                     break;
                 case "3":
-                    _peopleManager.PrintPeopleNameSorted(_people);
+                    _peoplePrinter.PrintPeople(_peopleHandler.SortPeopleByName(_people));
                     break;
                 case "4":
-                    _peopleManager.PrintPeopleNameSorted(_people, 5);
+                    _peoplePrinter.PrintPeople(_peopleHandler.SortPeopleByName(_people, 5));
                     break;
                 case "5":
-                    Console.Write("\nVad vill du söka på?: ");
-                    _peopleManager.SearchPeopleByName(_people, Console.ReadLine());
+                    var searchText = PromptForName();
+                    var matches = _peopleHandler.SearchPeopleByName(_people, searchText);
+                    if (!matches.Any())
+                    {
+                        Console.WriteLine($"\nInga personer hittades för söktexten \"{searchText}\".");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"\nSökresultat för \"{searchText}\":");
+                        _peoplePrinter.PrintPeople(matches);
+                    }
                     break;
                 case "6":
                     continues = false;
@@ -57,6 +69,23 @@ public class Menu
             Console.ReadKey(true);
         }
     }
+
+    private string PromptForName()
+    {
+        Console.Write("\nVad vill du söka på?: ");
+        string? searchText = Console.ReadLine();
+
+        while (string.IsNullOrWhiteSpace(searchText))
+        {
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.Write("\nSöktexten får inte vara tom, vänligen försök igen: ");
+            Console.ResetColor();
+            searchText = Console.ReadLine();
+        }
+
+        return searchText;
+    }
+
     public void ShowMenu()
     {
         Console.WriteLine("""
