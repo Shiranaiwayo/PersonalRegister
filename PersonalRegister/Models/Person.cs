@@ -1,4 +1,4 @@
-﻿namespace PersonalRegister;
+﻿namespace PersonalRegister.Models;
 
 /// <summary>
 /// Represents a person with ID, name, contactinfo, adress and company info.

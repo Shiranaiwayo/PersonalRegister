@@ -1,6 +1,7 @@
-﻿using System.Text.Json;
+﻿using PersonalRegister.Models;
+using System.Text.Json;
 
-namespace PersonalRegister;
+namespace PersonalRegister.Data;
 
 public class JsonDataStorage : IDataSource
 {

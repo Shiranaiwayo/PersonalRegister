@@ -1,16 +1,24 @@
-﻿namespace PersonalRegister;
+﻿using PersonalRegister.Data;
+using PersonalRegister.Models;
+using PersonalRegister.Operations;
+using PersonalRegister.UI;
+
+namespace PersonalRegister;
 
 internal class Program
 {
     static void Main(string[] args)
     {
-        var dataStorage = new DataStorage();
+        IDataSource dataStorage = new DataStorage();
         List<Person> people = dataStorage.GetPeople();
-        var peopleHandler = new PeopleHandler();
-        var peoplePrinter = new PeoplePrinter();
-        var menu = new Menu(people, peopleHandler, peoplePrinter);
 
-        menu.Run();
+        var peopleHandler = new PeopleOperator();
+        var inputHandler = new InputHandler();
+        var outputHandler = new OutputHandler();
+
+        var menuController = new MenuController(people, peopleHandler, inputHandler, outputHandler);
+
+        menuController.Run();
 
         //testa jsonfil
         //var jsonDataStorage = new JsonDataStorage();
@@ -18,5 +26,3 @@ internal class Program
         //peopleManager.PrintPeople(peopleJson);
     }
 }
-
-

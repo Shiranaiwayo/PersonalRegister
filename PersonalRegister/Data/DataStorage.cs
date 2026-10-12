@@ -1,4 +1,6 @@
-﻿namespace PersonalRegister;
+﻿using PersonalRegister.Models;
+
+namespace PersonalRegister.Data;
 
 class DataStorage : IDataSource
 {

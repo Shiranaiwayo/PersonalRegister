@@ -1,4 +1,4 @@
-﻿namespace PersonalRegister;
+﻿namespace PersonalRegister.Models;
 
 public class Address
 {
