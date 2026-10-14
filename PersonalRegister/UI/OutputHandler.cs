@@ -21,7 +21,9 @@ public class OutputHandler
     }
     public void PrintPeople(IEnumerable<Person> people)
     {
+        Console.ForegroundColor = ConsoleColor.Magenta;
         Console.WriteLine("\nRESULTAT");
+        Console.ResetColor();
 
         foreach (Person person in people)
         {
@@ -44,18 +46,22 @@ public class OutputHandler
         //var matches = people.ToList(); //Varför ToList istället för bara people.Any?
         if (!people.Any())
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"\nInga personer hittades för söktexten \"{searchText}\".");
+            Console.ResetColor();
         }
         else
         {
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine($"\nSökresultat för \"{searchText}\":");
+            Console.ResetColor();
             PrintPeople(people);
         }
     }
     public void HandleInvalidMenuChoice() //byta namn?
     {
         Console.ForegroundColor = ConsoleColor.DarkRed;
-        Console.WriteLine("\nOgiltig input. Välj ett nummer mellan 1 och 6.");
+        Console.WriteLine("\nOgiltig input. Välj en siffra mellan 1 och 6.");
         Console.ResetColor();
     }
 

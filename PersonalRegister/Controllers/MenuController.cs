@@ -1,20 +1,21 @@
 ﻿using PersonalRegister.Operations;
 using PersonalRegister.Models;
 using System.Text.RegularExpressions;
+using PersonalRegister.UI;
 
-namespace PersonalRegister.UI;
+namespace PersonalRegister.Controllers;
 
 public class MenuController
 {
     private List<Person> _people;
-    private PeopleOperator _peopleHandler;
+    private PeopleOperator _peopleOperator;
     private InputHandler _input;
     private OutputHandler _output;
-    public MenuController(List<Person> people, PeopleOperator peopleHandler, 
+    public MenuController(List<Person> people, PeopleOperator peopleOperator, 
                             InputHandler input, OutputHandler output)
     {
         _people = people;
-        _peopleHandler = peopleHandler;
+        _peopleOperator = peopleOperator;
         _input = input;
         _output = output;
     }
@@ -32,20 +33,20 @@ public class MenuController
             switch (choice)
             {
                 case "1":
-                    _output.PrintPeople(_peopleHandler.SortPeopleByID(_people));
+                    _output.PrintPeople(_peopleOperator.SortPeopleByID(_people));
                     break;
                 case "2":
-                    _output.PrintPeople(_peopleHandler.SortPeopleByID(_people, 5));
+                    _output.PrintPeople(_peopleOperator.SortPeopleByID(_people, 5));
                     break;
                 case "3":
-                    _output.PrintPeople(_peopleHandler.SortPeopleByName(_people));
+                    _output.PrintPeople(_peopleOperator.SortPeopleByName(_people));
                     break;
                 case "4":
-                    _output.PrintPeople(_peopleHandler.SortPeopleByName(_people, 5));
+                    _output.PrintPeople(_peopleOperator.SortPeopleByName(_people, 5));
                     break;
                 case "5":
                     var searchText = _input.GetSearchText();
-                    var matches = _peopleHandler.SearchPeopleByName(_people, searchText);
+                    var matches = _peopleOperator.SearchPeopleByName(_people, searchText);
                     _output.PrintSearchResult(matches, searchText);
                     break;
                 case "6":

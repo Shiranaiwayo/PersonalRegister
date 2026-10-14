@@ -7,7 +7,7 @@ public class JsonDataStorage : IDataSource
 {
     public List<Person> GetPeople()
     {
-        string json = File.ReadAllText("people.json");
+        string json = File.ReadAllText("Data/people.json");
 
         var options = new JsonSerializerOptions
         {

@@ -1,4 +1,5 @@
-﻿using PersonalRegister.Data;
+﻿using PersonalRegister.Controllers;
+using PersonalRegister.Data;
 using PersonalRegister.Models;
 using PersonalRegister.Operations;
 using PersonalRegister.UI;
@@ -9,20 +10,26 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        IDataSource dataStorage = new DataStorage();
-        List<Person> people = dataStorage.GetPeople();
+        //Välj datakälla genom att kommentera ut antingen rad 13 eller 14
+        IDataSource dataSource = new DataStorage();
+        //IDataSource dataSource = new JsonDataStorage();   
 
-        var peopleHandler = new PeopleOperator();
+        List<Person> people = dataSource.GetPeople();
+
+        var peopleOperator = new PeopleOperator();
         var inputHandler = new InputHandler();
         var outputHandler = new OutputHandler();
 
-        var menuController = new MenuController(people, peopleHandler, inputHandler, outputHandler);
+        var menuController = new MenuController(people, peopleOperator, inputHandler, outputHandler);
 
-        menuController.Run();
-
-        //testa jsonfil
-        //var jsonDataStorage = new JsonDataStorage();
-        //List<Person> peopleJson = jsonDataStorage.GetPeople();
-        //peopleManager.PrintPeople(peopleJson);
+        if (args.Length > 0)
+        {
+            var commandLineController = new CommandLineController(args, people);
+            commandLineController.Run();
+        }
+        else
+        {
+            menuController.Run();
+        }
     }
 }
