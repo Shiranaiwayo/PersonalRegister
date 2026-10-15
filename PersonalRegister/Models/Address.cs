@@ -1,5 +1,8 @@
 ﻿namespace PersonalRegister.Models;
 
+/// <summary>
+/// Represents a person's address information.
+/// </summary>
 public class Address
 {
     public string Street { get; set; }

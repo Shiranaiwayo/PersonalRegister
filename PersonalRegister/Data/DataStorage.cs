@@ -2,12 +2,15 @@
 
 namespace PersonalRegister.Data;
 
+/// <summary>
+/// Provides hardcoded person data.
+/// </summary>
 class DataStorage : IDataSource
 {
     /// <summary>
-    /// Returns the hardcoded people to be used in PersonalRegister
+    /// Returns the hardcoded people in the form of a list.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>A list of people.</returns>
     public List<Person> GetPeople()
     {
         return new List<Person>

@@ -2,8 +2,14 @@
 
 namespace PersonalRegister.UI;
 
+/// <summary>
+/// Handles the display of information to the console.
+/// </summary>
 public class OutputHandler
 {
+    /// <summary>
+    /// Displays the menu options.
+    /// </summary>
     public void ShowMenu()
     {
         Console.WriteLine("""
@@ -19,10 +25,16 @@ public class OutputHandler
             """);
         Console.Write("\nVälj ett alternativ (1-6): ");
     }
-    public void PrintPeople(IEnumerable<Person> people)
+
+    /// <summary>
+    /// Displays a collection of people with a description of the results.
+    /// </summary>
+    /// <param name="people">The people to display.</param>
+    /// <param name="description">Describes the operation used to retrieve the results.</param>
+    public void PrintPeople(IEnumerable<Person> people, string description)
     {
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine("\nRESULTAT");
+        Console.WriteLine($"\nVisar {description}:");
         Console.ResetColor();
 
         foreach (Person person in people)
@@ -41,10 +53,15 @@ public class OutputHandler
         }
         Console.WriteLine("------------------------------------------------");
     }
-    public void PrintSearchResult(IEnumerable<Person> people, string searchText)
+
+    /// <summary>
+    /// Displays the results of a name search.
+    /// </summary>
+    /// <param name="matches">The people matching the search.</param>
+    /// <param name="searchText">The text used in the search.</param>
+    public void PrintSearchResult(IEnumerable<Person> matches, string searchText)
     {
-        //var matches = people.ToList(); //Varför ToList istället för bara people.Any?
-        if (!people.Any())
+        if (!matches.Any())
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"\nInga personer hittades för söktexten \"{searchText}\".");
@@ -52,25 +69,34 @@ public class OutputHandler
         }
         else
         {
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine($"\nSökresultat för \"{searchText}\":");
-            Console.ResetColor();
-            PrintPeople(people);
+            PrintPeople(matches, $"resultat innehållande söktexten \"{searchText}\"");
         }
     }
-    public void HandleInvalidMenuChoice() //byta namn?
+
+    /// <summary>
+    /// Displays an error message in red.
+    /// </summary>
+    /// <param name="message">The error message to be displayed.</param>
+    public void PrintErrorMessage(string message) 
     {
         Console.ForegroundColor = ConsoleColor.DarkRed;
-        Console.WriteLine("\nOgiltig input. Välj en siffra mellan 1 och 6.");
+        Console.WriteLine($"\n{message}.");
         Console.ResetColor();
     }
 
+    /// <summary>
+    /// Displays a message when the program exits.
+    /// </summary>
     public void PrintExitMessage()
     {
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine("\nProgrammet avslutat.");
         Console.ResetColor();
     }
+
+    /// <summary>
+    /// Prompts the user to press a key to return to the menu.
+    /// </summary>
     public void PrintReturnMessage()
     {
         Console.ForegroundColor = ConsoleColor.Green;

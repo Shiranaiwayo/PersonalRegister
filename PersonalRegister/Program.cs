@@ -10,7 +10,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        //Välj datakälla genom att kommentera ut antingen rad 13 eller 14
+        //Välj datakälla genom att kommentera ut antingen rad 14 eller 15
         IDataSource dataSource = new DataStorage();
         //IDataSource dataSource = new JsonDataStorage();   
 
@@ -20,15 +20,14 @@ internal class Program
         var inputHandler = new InputHandler();
         var outputHandler = new OutputHandler();
 
-        var menuController = new MenuController(people, peopleOperator, inputHandler, outputHandler);
-
         if (args.Length > 0)
         {
-            var commandLineController = new CommandLineController(args, people);
+            var commandLineController = new CommandLineController(args, people, peopleOperator, outputHandler);
             commandLineController.Run();
         }
         else
         {
+            var menuController = new MenuController(people, peopleOperator, inputHandler, outputHandler);
             menuController.Run();
         }
     }
