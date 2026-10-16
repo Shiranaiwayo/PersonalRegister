@@ -1,5 +1,8 @@
-﻿namespace PersonalRegister;
+﻿namespace PersonalRegister.Models;
 
+/// <summary>
+/// Represents a company and its slogan.
+/// </summary>
 public class Company
 {
     public string Name { get; set; }

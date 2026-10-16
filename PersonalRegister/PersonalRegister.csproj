@@ -8,4 +8,14 @@
 	<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Data\people.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Data\people.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

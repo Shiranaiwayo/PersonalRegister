@@ -1,7 +1,7 @@
-﻿namespace PersonalRegister;
+﻿namespace PersonalRegister.Models;
 
 /// <summary>
-/// Represents a person with ID, name, contactinfo, adress and company info.
+/// Represents a person with ID, name, contact-, address- and company info.
 /// </summary>
 public class Person
 {

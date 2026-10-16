@@ -1,0 +1,143 @@
+﻿[
+  {
+    "id": 199308121228,
+    "name": "Julia Bergström",
+    "email": "julia.bergstrom@example.com",
+    "address": {
+      "street": "Linnégatan 14",
+      "postalCode": "413 04",
+      "city": "Göteborg"
+    },
+    "company": {
+      "name": "Aurora Digital",
+      "slogan": "Ideas into reality"
+    }
+  },
+  {
+    "id": 197611031316,
+    "name": "Magnus Lind",
+    "email": "magnus.lind@example.com",
+    "address": {
+      "street": "Södra Esplanaden 9",
+      "postalCode": "223 54",
+      "city": "Lund"
+    },
+    "company": {
+      "name": "Northbridge Consulting",
+      "slogan": "Connecting people and possibilities"
+    }
+  },
+  {
+    "id": 200203191424,
+    "name": "Alice Nyström",
+    "email": "alice.nystrom@example.com",
+    "address": {
+      "street": "Bergsgatan 27",
+      "postalCode": "852 36",
+      "city": "Sundsvall"
+    },
+    "company": {
+      "name": "Pixel Forge",
+      "slogan": "Creating digital experiences"
+    }
+  },
+  {
+    "id": 198906221513,
+    "name": "Daniel Ek",
+    "email": "daniel.ek@example.com",
+    "address": {
+      "street": "Vallgatan 5",
+      "postalCode": "411 16",
+      "city": "Göteborg"
+    },
+    "company": {
+      "name": "Blue Horizon AB",
+      "slogan": "Beyond today's boundaries"
+    }
+  },
+  {
+    "id": 199712081620,
+    "name": "Maja Sandberg",
+    "email": "maja.sandberg@example.com",
+    "address": {
+      "street": "Östra Storgatan 31",
+      "postalCode": "553 21",
+      "city": "Jönköping"
+    },
+    "company": {
+      "name": "Evergreen Solutions",
+      "slogan": "Innovation with purpose"
+    }
+  },
+  {
+    "id": 196509171713,
+    "name": "Henrik Wallin",
+    "email": "henrik.wallin@example.com",
+    "address": {
+      "street": "Köpmangatan 8",
+      "postalCode": "972 33",
+      "city": "Luleå"
+    },
+    "company": {
+      "name": "Arctic Systems",
+      "slogan": "Built for tomorrow"
+    }
+  },
+  {
+    "id": 200005281829,
+    "name": "Nora Falk",
+    "email": "nora.falk@example.com",
+    "address": {
+      "street": "Nygatan 12",
+      "postalCode": "803 20",
+      "city": "Gävle"
+    },
+    "company": {
+      "name": "BrightPath Media",
+      "slogan": "Your vision our mission"
+    }
+  },
+  {
+    "id": 198112301919,
+    "name": "Patrik Holmgren",
+    "email": "patrik.holmgren@example.com",
+    "address": {
+      "street": "Storgatan 45",
+      "postalCode": "352 30",
+      "city": "Växjö"
+    },
+    "company": {
+      "name": "CoreLogic Partners",
+      "slogan": "Making complexity simple"
+    }
+  },
+  {
+    "id": 199404152028,
+    "name": "Linnea Åkesson",
+    "email": "linnea.akesson@example.com",
+    "address": {
+      "street": "Drottninggatan 18",
+      "postalCode": "602 24",
+      "city": "Norrköping"
+    },
+    "company": {
+      "name": "Nova Creative",
+      "slogan": "Designing what's next"
+    }
+  },
+  {
+    "id": 197802092119,
+    "name": "Fredrik Blom",
+    "email": "fredrik.blom@example.com",
+    "address": {
+      "street": "Kungsgatan 6",
+      "postalCode": "753 21",
+      "city": "Uppsala"
+    },
+    "company": {
+      "name": "Summit Technologies",
+      "slogan": "Technology that moves you forward"
+    }
+  }
+]
+  
