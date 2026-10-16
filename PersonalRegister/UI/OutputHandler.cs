@@ -80,7 +80,7 @@ public class OutputHandler
     public void PrintErrorMessage(string message) 
     {
         Console.ForegroundColor = ConsoleColor.DarkRed;
-        Console.WriteLine($"\n{message}.");
+        Console.Write($"\n{message}");
         Console.ResetColor();
     }
 

@@ -52,24 +52,19 @@ public class CommandLineController
                 _output.PrintSearchResult(matches, searchText);
                 break;
             case "searchTextMissing":
-                _output.PrintErrorMessage("Söktext saknas");
+                _output.PrintErrorMessage("Söktext saknas.");
                 break;
             case "invalidCommand":
-                _output.PrintErrorMessage("Ogiltigt kommando");
+                _output.PrintErrorMessage("Ogiltigt kommando.");
                 break;
             case "invalidArgument":
-                _output.PrintErrorMessage("Ogiltigt argument");
+                _output.PrintErrorMessage("Ogiltigt argument.");
                 break;
         }
     }
-
-    /// <summary>
-    /// Parses command-line arguments to identify the requested operation.
-    /// </summary>
-    /// <returns>The operation name or an error identifier.</returns>
     private string ParseArguments()
     {
-        if (_args[0] != "--list")
+        if (_args[0] != "list")
         {
             return "invalidCommand";
         }

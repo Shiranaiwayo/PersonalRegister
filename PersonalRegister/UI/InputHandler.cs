@@ -5,6 +5,12 @@
 /// </summary>
 public class InputHandler
 {
+    private OutputHandler _output;
+    public InputHandler(OutputHandler output)
+    {
+        _output = output;
+    }
+
     /// <summary>
     /// Reads the user's menu selection.
     /// </summary>
@@ -25,9 +31,7 @@ public class InputHandler
 
         while (string.IsNullOrWhiteSpace(searchText))
         {
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.Write("\nSöktexten får inte vara tom, vänligen försök igen: ");
-            Console.ResetColor();
+            _output.PrintErrorMessage("Söktexten får inte vara tom, vänligen försök igen: ");
             searchText = Console.ReadLine();
         }
         return searchText;

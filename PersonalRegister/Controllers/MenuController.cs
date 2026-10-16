@@ -64,7 +64,7 @@ public class MenuController
                     _output.PrintExitMessage();
                     continue;
                 default:
-                    _output.PrintErrorMessage("Ogiltig input. Välj en siffra mellan 1 och 6");
+                    _output.PrintErrorMessage("Ogiltig input. Välj en siffra mellan 1 och 6.\n");
                     break;
             }
             _output.PrintReturnMessage();

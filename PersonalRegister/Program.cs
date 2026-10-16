@@ -17,8 +17,8 @@ internal class Program
         List<Person> people = dataSource.GetPeople();
 
         var peopleOperator = new PeopleOperator();
-        var inputHandler = new InputHandler();
         var outputHandler = new OutputHandler();
+        var inputHandler = new InputHandler(outputHandler);
 
         if (args.Length > 0)
         {

@@ -3,9 +3,9 @@
 namespace PersonalRegister.Data;
 
 /// <summary>
-/// Provides hardcoded person data.
+/// Provides the hardcoded person data.
 /// </summary>
-class DataStorage : IDataSource
+public class DataStorage : IDataSource
 {
     /// <summary>
     /// Returns the hardcoded people in the form of a list.
